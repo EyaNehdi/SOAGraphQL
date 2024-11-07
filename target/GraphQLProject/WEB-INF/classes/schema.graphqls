@@ -1,0 +1,29 @@
+type Logement {
+  reference: Int
+  adresse: String
+  gouvernorat: String
+  description: String
+  prix:Float
+}
+type RendezVous {
+	id:Int
+	date: String
+	heure: String
+	logement:Logement
+}
+
+type Query {
+  allLogements: [Logement]
+  GetRdvsByLog(ref:Int): [RendezVous]
+  allRendezVous: [RendezVous]
+  getLogementByRef(reference:Int): Logement
+}
+type Mutation {
+  createLogement(reference:Int, adresse:String): Logement
+  updateRendezVous(id:Int,date:String, heure:String, numTel:String): Boolean
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}
